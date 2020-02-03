@@ -6,7 +6,9 @@
 
 As title, this is a video writter used to write video with **friendly** ffmpeg.
 
-I'm angry with the fucking OpenCV because the video writter always saves only **44 bytes** video header instead of saving videos.
+I'm angry with the fucking OpenCV because the video writter always saves only **6KB** video header instead of saving videos.
+
+> I found the reason is that the video writter in OpenCV dose **NOT** check the shape of frame when writting into a file and it does **NOT** give any errors and warnings. In short, if the size is different from the original setting of video writter, it will **NOT** write any frames.
 
 ## Requirements
 
@@ -38,7 +40,7 @@ while True:
 
 ffvw.close()
 # You can get gif output!
-ffvw.output_to_gif('result/result.gif')
+ffvw.output_to_gif('./result/test.gif')
 ```
 
 ### Demo
@@ -50,5 +52,7 @@ python main.py
 ```
 
 ## Results
+
+Drawing ramdomly rectangles from original video in `main.py`.
 
 ![Result](./result/result.mp4.gif)
